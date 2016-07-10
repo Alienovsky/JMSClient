@@ -1,9 +1,8 @@
 package com.madebykamil.jms;
 
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageListener;
-import javax.jms.TextMessage;
+import com.madebykamil.model.Person;
+
+import javax.jms.*;
 
 public class MessageConsumer implements MessageListener {
 
@@ -14,13 +13,22 @@ public class MessageConsumer implements MessageListener {
     }
 
     public void onMessage(final Message message) {
-        if(message instanceof TextMessage){
+        if(message instanceof ObjectMessage){
+            ObjectMessage objectMessage = (ObjectMessage) message;
+            try {
+                Person p = (Person) objectMessage.getObject();
+                System.out.println(p.getName()+" "+p.getSurname());
+            } catch (JMSException e) {
+                e.printStackTrace();
+            }
+        }
+      /*  if(message instanceof TextMessage){
             final TextMessage textMessage = (TextMessage) message;
             try {
                 System.out.println("got message: " + textMessage.getText());
             } catch (JMSException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
     }
 }
