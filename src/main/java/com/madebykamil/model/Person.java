@@ -3,7 +3,7 @@ package com.madebykamil.model;
 import java.io.Serializable;
 
 public class Person implements Serializable{
-    private static long serialVersionUID = 1112399434508676095L;
+    private static final long serialVersionUID = 1L;
     String name;
     String surname;
     String phone;
