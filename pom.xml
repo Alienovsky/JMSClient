@@ -74,8 +74,12 @@
             <version>4.3.1.RELEASE</version>
         </dependency>
 
-
-
+        <!-- https://mvnrepository.com/artifact/xstream/xstream -->
+        <dependency>
+            <groupId>xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>1.2.2</version>
+        </dependency>
 
     </dependencies>
 

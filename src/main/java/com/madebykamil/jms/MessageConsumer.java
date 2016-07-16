@@ -22,13 +22,5 @@ public class MessageConsumer implements MessageListener {
                 e.printStackTrace();
             }
         }
-      /*  if(message instanceof TextMessage){
-            final TextMessage textMessage = (TextMessage) message;
-            try {
-                System.out.println("got message: " + textMessage.getText());
-            } catch (JMSException e) {
-                e.printStackTrace();
-            }
-        }*/
     }
 }
