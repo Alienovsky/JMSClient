@@ -1,11 +1,15 @@
 package com.madebykamil.jms;
 
-import com.madebykamil.model.Book;
-import com.madebykamil.model.Person;
+import com.madebykamil.jms.responses.AddBookResponse;
+import com.madebykamil.jms.responses.GetAllBooksResponse;
+import com.madebykamil.jms.responses.GetBookByIdResponse;
+import com.madebykamil.jms.responses.RemoveBookResponse;
 
-import javax.jms.*;
-import java.util.ArrayList;
-import java.util.List;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageListener;
+import javax.jms.ObjectMessage;
+import java.io.Serializable;
 
 public class MessageConsumer implements MessageListener {
 
@@ -16,20 +20,26 @@ public class MessageConsumer implements MessageListener {
     }
 
     public void onMessage(final Message message) {
-        /*if(message instanceof ObjectMessage){
+        if (message instanceof ObjectMessage) {
             ObjectMessage objectMessage = (ObjectMessage) message;
             try {
-                Person p = (Person) objectMessage.getObject();
-                System.out.println(p.getName()+" "+p.getSurname());
-            } catch (JMSException e) {
-                e.printStackTrace();
-            }
-        }*/
-        if(message instanceof ObjectMessage){
-            ObjectMessage objectMessage = (ObjectMessage) message;
-            try {
-                List<Book> books = (ArrayList<Book>) objectMessage.getObject();
-                System.out.println(books.size());
+                Serializable objectFromMessage = objectMessage.getObject();
+                if (objectFromMessage instanceof GetAllBooksResponse) {
+                    GetAllBooksResponse response = (GetAllBooksResponse) objectFromMessage;
+                    System.out.println(response.getAllBooks().size());
+                }
+                if(objectFromMessage instanceof GetBookByIdResponse){
+                    GetBookByIdResponse response = (GetBookByIdResponse) objectFromMessage;
+                    System.out.println(response.getBook().getDescription());
+                }
+                if(objectFromMessage instanceof AddBookResponse){
+                    AddBookResponse response = (AddBookResponse) objectFromMessage;
+                    System.out.println(response.getBookId());
+                }
+                if(objectFromMessage instanceof RemoveBookResponse){
+                    RemoveBookResponse response = (RemoveBookResponse) objectFromMessage;
+                    System.out.println(response.getBookId());
+                }
             } catch (JMSException e) {
                 e.printStackTrace();
             }
