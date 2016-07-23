@@ -13,10 +13,10 @@ import java.io.Serializable;
 
 public class MessageConsumer implements MessageListener {
 
-    private MessageSender messageSender;
+    Serializable objectFromMessage;
 
-    public void setMessageSender(MessageSender messageSender) {
-        this.messageSender = messageSender;
+    public Serializable getObjectFromMessage() {
+        return objectFromMessage;
     }
 
     public void onMessage(final Message message) {
@@ -24,7 +24,8 @@ public class MessageConsumer implements MessageListener {
             ObjectMessage objectMessage = (ObjectMessage) message;
             try {
                 Serializable objectFromMessage = objectMessage.getObject();
-                if (objectFromMessage instanceof GetAllBooksResponse) {
+               /* if (objectFromMessage instanceof
+                        GetAllBooksResponse) {
                     GetAllBooksResponse response = (GetAllBooksResponse) objectFromMessage;
                     System.out.println(response.getAllBooks().size());
                 }
@@ -39,7 +40,7 @@ public class MessageConsumer implements MessageListener {
                 if(objectFromMessage instanceof RemoveBookResponse){
                     RemoveBookResponse response = (RemoveBookResponse) objectFromMessage;
                     System.out.println(response.getBookId());
-                }
+                }*/
             } catch (JMSException e) {
                 e.printStackTrace();
             }

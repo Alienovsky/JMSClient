@@ -1,10 +1,7 @@
 package com.madebykamil.model;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-
 import java.io.Serializable;
 
-@XStreamAlias("author")
 public class Author implements Serializable{
     private static final long serialVersionUID = 14L;
     private String name;
