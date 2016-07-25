@@ -23,8 +23,9 @@ public class MessageConsumer implements MessageListener {
         if (message instanceof ObjectMessage) {
             ObjectMessage objectMessage = (ObjectMessage) message;
             try {
-                Serializable objectFromMessage = objectMessage.getObject();
-               /* if (objectFromMessage instanceof
+                objectFromMessage = objectMessage.getObject();
+               /* Serializable objectFromMessage = objectMessage.getObject();
+                if (objectFromMessage instanceof
                         GetAllBooksResponse) {
                     GetAllBooksResponse response = (GetAllBooksResponse) objectFromMessage;
                     System.out.println(response.getAllBooks().size());

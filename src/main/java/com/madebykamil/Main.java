@@ -17,7 +17,7 @@ public class Main {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("/application-context.xml");
         MessageSender messageSender = (MessageSender) applicationContext.getBean("messageSender");
 
-        GetAllBooksRequest getAllBooksRequest = new GetAllBooksRequest();
+     /*   GetAllBooksRequest getAllBooksRequest = new GetAllBooksRequest();
         messageSender.send(getAllBooksRequest);
         sleep(100);
 
@@ -30,7 +30,7 @@ public class Main {
         sleep(100);
 
         RemoveBookRequest removeBookRequest = new RemoveBookRequest("bb");
-        messageSender.send(removeBookRequest);
+        messageSender.send(removeBookRequest);*/
     }
 
 }

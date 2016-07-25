@@ -5,7 +5,7 @@ import com.madebykamil.model.Book;
 import java.io.Serializable;
 import java.util.List;
 
-public class GetAllBooksResponse implements Serializable {
+public class GetAllBooksResponse extends AbstractResponse implements Serializable {
     private static final long serialVersionUID = 666L;
     private List<Book> allBooks;
 

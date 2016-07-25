@@ -4,7 +4,7 @@ import com.madebykamil.model.Book;
 
 import java.io.Serializable;
 
-public class GetBookByIdResponse implements Serializable {
+public class GetBookByIdResponse extends AbstractResponse implements Serializable {
     private static final long serialVersionUID = 777L;
     private Book book;
 

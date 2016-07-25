@@ -11,14 +11,14 @@ public class AddBookRequest implements Serializable {
     private Float price;
     private String description;
 
-    public AddBookRequest(String authorName, String authorSurname, String title, String genre, Float price, String description) {
+    /*public AddBookRequest(String authorName, String authorSurname, String title, String genre, Float price, String description) {
         this.authorName = authorName;
         this.authorSurname = authorSurname;
         this.title = title;
         this.genre = genre;
         this.price = price;
         this.description = description;
-    }
+    }*/
 
     public String getAuthorName() {
         return authorName;
