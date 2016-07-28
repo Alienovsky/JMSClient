@@ -1,6 +1,9 @@
 package com.madebykamil.jms.responses;
 
-public class AbstractResponse {
+import java.io.Serializable;
+
+public class AbstractResponse implements Serializable {
+    private static final long serialVersionUID = 151L;
     protected String errors;
 
     public String getErrors() {

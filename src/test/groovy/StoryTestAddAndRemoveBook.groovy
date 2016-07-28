@@ -41,7 +41,7 @@ class StoryTestAddAndRemoveBook extends Specification {
         messageConsumer.objectFromMessage instanceof AddBookResponse
         def addBookResponse = (AddBookResponse) messageConsumer.objectFromMessage
         addBookResponse.bookId != null
-        addBookResponse.errors == null
+        addBookResponse.errors == ""
         when: "we are trying to retrieve created book by prepared request"
         GetBookByIdRequest getBookByIdRequest = new GetBookByIdRequest()
         getBookByIdRequest.bookId = addBookResponse.getBookId()
@@ -51,7 +51,7 @@ class StoryTestAddAndRemoveBook extends Specification {
         messageConsumer.objectFromMessage instanceof GetBookByIdResponse
         def getBookByIdResponse = (GetBookByIdResponse) messageConsumer.objectFromMessage
         getBookByIdResponse.book != null
-        getBookByIdResponse.errors == null
+        getBookByIdResponse.errors == ""
         getBookByIdResponse.book.author.name == addBookRequest.authorName
         getBookByIdResponse.book.author.surname == addBookRequest.authorSurname
         getBookByIdResponse.book.description == addBookRequest.description
@@ -68,7 +68,7 @@ class StoryTestAddAndRemoveBook extends Specification {
         def removeBookResponse = (RemoveBookResponse) messageConsumer.objectFromMessage
         removeBookResponse.isRemoved != null
         removeBookResponse.isRemoved == true
-        removeBookResponse.errors == null
+        removeBookResponse.errors == ""
         when: "we try to get removed book"
         GetBookByIdRequest getBookAgainByIdRequest = new GetBookByIdRequest()
         getBookAgainByIdRequest.bookId = addBookResponse.getBookId()
@@ -78,7 +78,7 @@ class StoryTestAddAndRemoveBook extends Specification {
         messageConsumer.objectFromMessage instanceof GetBookByIdResponse
         def getBookAgainByIdResponse = (GetBookByIdResponse) messageConsumer.objectFromMessage
         getBookAgainByIdResponse.book == null
-        getBookAgainByIdResponse.errors != null
+        getBookAgainByIdResponse.errors.isEmpty() == false
         getBookAgainByIdResponse.errors.contains(getBookAgainByIdRequest.bookId)
 
     }

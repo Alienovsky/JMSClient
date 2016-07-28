@@ -53,7 +53,7 @@ class SmokeTests extends Specification {
         messageConsumer.objectFromMessage instanceof AddBookResponse
         def response = (AddBookResponse) messageConsumer.objectFromMessage
         response.bookId != null
-        response.errors == null
+        response.errors == ""
     }
 
     @Test
@@ -68,7 +68,7 @@ class SmokeTests extends Specification {
         messageConsumer.objectFromMessage instanceof GetBookByIdResponse
         def response = (GetBookByIdResponse) messageConsumer.objectFromMessage
         response.book != null
-        response.errors == null
+        response.errors == ""
     }
 
     @Test
@@ -84,7 +84,7 @@ class SmokeTests extends Specification {
         def response = (RemoveBookResponse) messageConsumer.objectFromMessage
         response.isRemoved != null
         response.isRemoved == true
-        response.errors == null
+        response.errors == ""
     }
 
 }
